@@ -42,8 +42,7 @@ public class InvoiceEventListener {
                 currentCache = new UserCache(null, new ArrayList<>());
             }
 
-            // Обновляем список счетов (добавляем новый в начало — свежий сверху)
-            // Обновляем список счетов (добавляем новый в начало — свежий сверху)
+
             var updatedInvoices = new ArrayList<>(currentCache.invoices());
             updatedInvoices.add(0, new UserCache.InvoiceCache(
                     event.invoiceId(),

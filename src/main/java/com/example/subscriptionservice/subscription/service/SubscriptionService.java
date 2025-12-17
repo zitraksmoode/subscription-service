@@ -29,7 +29,6 @@ public class SubscriptionService {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public void activate(Long userId, SubscriptionType type, LocalDate activationDate) {
-        // Проверка: дата не в прошлом
         if (activationDate.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Дата активации не может быть в прошлом");
         }
@@ -58,7 +57,6 @@ public class SubscriptionService {
                     sub.setActive(false);
                     subscriptionRepository.save(sub);
 
-                    // Отправляем событие деактивации
                     sendSubscriptionEvent(userId, null, null);
 
                     log.info("Подписка деактивирована для пользователя {}", userId);
